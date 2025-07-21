@@ -1,0 +1,10 @@
+tapi
+uvicorn
+langchain
+langchain-community
+openai
+pinecone-client
+redis
+python-dotenv
+streamlit
+
