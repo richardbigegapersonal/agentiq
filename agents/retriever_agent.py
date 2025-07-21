@@ -1,5 +1,5 @@
 
-m langchain.chains import RetrievalQA
+from langchain.chains import RetrievalQA
 from agentiq.vectorstore.index_pinecone import vectorstore
 from langchain.chat_models import ChatOpenAI
 
