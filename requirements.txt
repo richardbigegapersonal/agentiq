@@ -1,9 +1,9 @@
 tapi
 uvicorn
 langchain
-langchain-community
+langchain_community
 openai
-pinecone-client
+pinecone
 redis
 python-dotenv
 streamlit
