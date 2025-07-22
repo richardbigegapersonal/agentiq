@@ -1,39 +1,38 @@
-# agentiq/api/inference_server.py
-
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Form
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from dotenv import load_dotenv
-import os
 from langsmith import traceable
+import os
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Retrieve OpenAI API key (do not hardcode!)
 openai_key = os.getenv("OPENAI_API_KEY")
 if not openai_key:
     raise ValueError("OPENAI_API_KEY not set in environment.")
 
 app = FastAPI()
 
-# Initialize LangChain LLM
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7, openai_api_key=openai_key)
+# Set up static files and templates
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
-# Simple prompt chain
-prompt = PromptTemplate(
-    input_variables=["question"],
-    template="Answer the question: {question}"
-)
+# Chain setup
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7, openai_api_key=openai_key)
+prompt = PromptTemplate(input_variables=["question"], template="Answer the question: {question}")
 chain = LLMChain(llm=llm, prompt=prompt)
 
-class Query(BaseModel):
-    question: str
-
 @traceable(name="AgentIQ Query Trace")
-@app.post("/query")
-async def ask_question(query: Query):
-    response = chain.run(query.question)
-    return {"answer": response}
+@app.post("/", response_class=HTMLResponse)
+async def get_answer(request: Request, question: str = Form(...)):
+    response = chain.run(question)
+    return templates.TemplateResponse("index.html", {"request": request, "answer": response})
+
+@app.get("/", response_class=HTMLResponse)
+async def form_get(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
