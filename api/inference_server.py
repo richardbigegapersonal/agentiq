@@ -24,7 +24,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # Chain setup
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7, openai_api_key=openai_key)
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.1, openai_api_key=openai_key)
 prompt = PromptTemplate(input_variables=["question"], template="Answer the question: {question}")
 chain = LLMChain(llm=llm, prompt=prompt)
 
