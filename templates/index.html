@@ -1,39 +1,22 @@
-
 <!DOCTYPE html>
 <html>
-	<head>
-		    <title>AgentIQ</title>
-		        <link rel="stylesheet" href="/static/styles.css">
-	</head>
-	<body>
-		    <div class="container">
-			            <h1>💡 Ask AgentIQ</h1>
-				            <form method="post">
-						                <input type="text" name="question" placeholder="Ask me anything..." required>
-								            <button type="submit">Ask</button>
-									            </form>
-										            {% if answer %}
-											            <div class="result">
-													                <strong>Answer:</strong>
-															            <p>{{ answer }}</p>
-																            </div>
-																	            {% endif %}
-																		        </div>
-	</body>
+<head>
+    <title>AgentIQ</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>💡 Ask AgentIQ</h1>
+        <form method="post">
+            <input type="text" name="question" placeholder="Ask me anything..." required>
+            <button type="submit">Ask</button>
+        </form>
+        {% if answer %}
+        <div class="result">
+            <strong>Answer:</strong>
+            <p>{{ answer }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
