@@ -7,6 +7,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from dotenv import load_dotenv
 import os
+from langsmith import traceable
 
 # Load environment variables from .env file
 load_dotenv()
