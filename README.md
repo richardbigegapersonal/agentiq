@@ -2,12 +2,12 @@
 
 # 🤖 AgentIQ: Modular Agentic AI Workflow Toolkit
 
-[![Docker Build](https://img.shields.io/docker/cloud/build/your-dockerhub-username/agentiq)](https://hub.docker.com/r/your-dockerhub-username/agentiq)
-[![GitHub last commit](https://img.shields.io/github/last-commit/your-username/agentiq)](https://github.com/your-username/agentiq)
+[![Docker Build](https://img.shields.io/docker/cloud/build/your-dockerhub-username/agentiq)](https://hub.docker.com/r/rbigega/agentiq)
+[![GitHub last commit](https://img.shields.io/github/last-commit/your-username/agentiq)](https://github.com/richardbigegapersonal/agentiq)
 
 AgentIQ is an open-source, production-ready framework for building agentic applications using LangChain, Pinecone, and Redis. With integrated LangSmith tracing, modular agent design, and out-of-the-box deployment, it’s perfect for GenAI developers and AI infrastructure teams.
 
-![AgentIQ Demo](https://your-image-link.com/screenshot.png)
+[![AgentIQ Demo](https://your-image-link.com/screenshot.png)](https://agentiq-ybuu.onrender.com)
 
 ---
 
@@ -46,7 +46,7 @@ cp .env.example .env  # then fill in API keys
 
 ### 2. Run Locally with Docker Compose
 ```bash
-docker-compose up --build
+docker-compose up-- build
 ```
 
 ### 3. Access the App
@@ -96,6 +96,7 @@ Expose port `8000` (API) and `8501` (Streamlit).
 
 ## 💬 Contact
 Built by [Richard Bigega](mailto:richardbigega@gmail.com)
+Let's connect on [Linkedin](https://linkedin.com/in/richard-bigega)
 
 ---
 
