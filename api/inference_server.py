@@ -9,6 +9,7 @@ from langchain.chains import LLMChain
 from dotenv import load_dotenv
 from langsmith import traceable
 import os
+import logging
 
 load_dotenv()
 
@@ -30,8 +31,18 @@ chain = LLMChain(llm=llm, prompt=prompt)
 @traceable(name="AgentIQ Query Trace")
 @app.post("/", response_class=HTMLResponse)
 async def get_answer(request: Request, question: str = Form(...)):
-    response = chain.run(question)
-    return templates.TemplateResponse("index.html", {"request": request, "answer": response})
+    try:
+        response = chain.run(question)
+        return templates.TemplateResponse("index.html", {
+            "request": request,
+            "answer": response
+        })
+    except Exception as e:
+        logging.exception("❌ Error while processing the question")
+        return templates.TemplateResponse("index.html", {
+            "request": request,
+            "answer": f"⚠️ An internal error occurred: {str(e)}"
+        })
 
 @app.get("/", response_class=HTMLResponse)
 async def form_get(request: Request):
