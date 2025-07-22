@@ -31,6 +31,7 @@ chain = LLMChain(llm=llm, prompt=prompt)
 class Query(BaseModel):
     question: str
 
+@traceable(name="AgentIQ Query Trace")
 @app.post("/query")
 async def ask_question(query: Query):
     response = chain.run(query.question)
