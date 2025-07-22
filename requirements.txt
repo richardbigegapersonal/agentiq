@@ -6,4 +6,4 @@ pinecone
 redis
 python-dotenv
 streamlit
-
+langsmith
