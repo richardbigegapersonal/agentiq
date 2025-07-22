@@ -39,7 +39,7 @@ agentiq/
 ## 🚀 Quickstart
 ### 1. Clone and Configure
 ```bash
-git clone https://github.com/your-username/agentiq.git
+git clone https://github.com/richardbigegapersonal/agentiq.git
 cd agentiq
 cp .env.example .env  # then fill in API keys
 ```
@@ -93,19 +93,6 @@ Expose port `8000` (API) and `8501` (Streamlit).
 
 ---
 
-## 📝 Blog Post: Building AgentIQ
-**Title**: Building AgentIQ: A Modular Agentic AI Workflow Toolkit with RAG, Redis, and Tracing
-
-> AgentIQ is a fast, composable agentic framework designed to showcase modern GenAI workflows for enterprise applications. Built with LangChain, Pinecone, and Redis, and integrated with LangSmith for observability, it’s production-ready and developer-friendly.
-
-**Takeaways:**
-- Chain agents with LangChain + LangGraph
-- Redis-based session memory
-- Pinecone RAG setup
-- LangSmith for tracing/debugging
-- GitHub Actions + Render deployment
-
----
 
 ## 💬 Contact
 Built by [Richard Bigega](mailto:richardbigega@gmail.com)
